@@ -1,4 +1,4 @@
-require('dotenv').config()
+const config = require('./config/config.js')
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -17,5 +17,5 @@ app.post('/__space/v0/actions', async (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Server listening on ${port}`);
+    console.log(`Server listening on ${port}, environment ${config.NODE_ENV}`);
 });

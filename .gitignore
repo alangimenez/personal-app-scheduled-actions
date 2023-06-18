@@ -1,4 +1,5 @@
 .space
-.env
+/config/dev.env
+/config/prod.env
 Spacefile
 /node_modules

@@ -1,7 +1,8 @@
+const config = require('../config/config')
+const fetch = require('node-fetch')
+
 class AppBackClient {
-    constructor(
-        host = 'https://appback-1-p4314249.deta.app'
-    ){}
+    constructor(){}
 
     async getLoginToken() {
         const body = JSON.stringify({
@@ -9,7 +10,7 @@ class AppBackClient {
             password: process.env.PASSWORD
         })
         const tokenResponse = await fetch(
-            `${host}/user/login`,
+            `${config.HOST}/user/login`,
             {
                 method: 'POST',
                 body: body,
@@ -22,7 +23,7 @@ class AppBackClient {
 
     async saveQuotesAndOtherQuotes(token) {
         await fetch(
-            `${host}/lastvalue/save`,
+            `${config.HOST}/lastvalue/save`,
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }
