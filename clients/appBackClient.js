@@ -1,5 +1,6 @@
 const config = require('../config/config')
 const fetch = require('node-fetch')
+const logService = require('../services/logs/logService')
 
 class AppBackClient {
     constructor(){}
@@ -17,6 +18,7 @@ class AppBackClient {
                 headers: { 'Content-Type': 'application/json' }
             }
         )
+        await logService.createNewMessage(tokenResponse)
         const tokenData = await tokenResponse.json()
         return tokenData.token
     }
