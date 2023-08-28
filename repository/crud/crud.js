@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 // const uri = process.env.MONGODB_URI;
-const config = require('../../config/config.environments');
+const config = require('../../config/config');
 // const { ErrorHandler } = require('../../error/error');
 // const error = new ErrorHandler();
-const cantCreateObjectException = require('../../errors/CantCreateObjectException');
+// const cantCreateObjectException = require('../../errors/CantCreateObjectException');
 
 (async () => {
     try {
@@ -57,7 +57,8 @@ class CrudMongo {
             let nuevoObjeto = await this.model.create(objeto);
             return nuevoObjeto
         } catch (e) {
-            cantCreateObjectException(e.message)
+            console.log(e)
+            // cantCreateObjectException(e.message)
         }
     }
 
